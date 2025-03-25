@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { usePosts } from "../../hooks/usePosts";
+import Header from "../../components/Header/Header";
 
 const Container = styled.div`
   margin: 20px auto;
@@ -41,19 +42,19 @@ const Textarea = styled.textarea`
   color: #fff;
 `;
 
-const Button = styled.button`
+const Button = styled.button<{ disabled: boolean }>`
   width: 100%;
   padding: 10px;
   font-size: 1rem;
   color: white;
-  background-color: #0069d9;
+  background-color: ${(props) => (props.disabled ? "#aaa" : "#0069d9")};
   border: none;
   border-radius: 4px;
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: ${(props) => (props.disabled ? "#aaa" : "#0056b3")};
   }
 `;
 
@@ -64,35 +65,43 @@ const AddPost: React.FC = () => {
   const [author, setAuthor] = useState("");
 
   const handleAddPost = () => {
-    const newPost = { title, content, author };
+    const newPost = { title, content, author } as any;
     addPost(newPost);
     setTitle("");
     setContent("");
     setAuthor("");
   };
 
+  const isButtonDisabled = !title || !content || !author;
+
   return (
-    <Container>
-      <Title>Adicionar Novo Post</Title>
-      <Input
-        type="text"
-        placeholder="Título"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-      />
-      <Textarea
-        placeholder="Conteúdo"
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-      />
-      <Input
-        type="text"
-        placeholder="Autor"
-        value={author}
-        onChange={(e) => setAuthor(e.target.value)}
-      />
-      <Button onClick={handleAddPost}>Adicionar Post</Button>
-    </Container>
+    <>
+      <Header />
+
+      <Container>
+        <Title>Adicionar Novo Post</Title>
+        <Input
+          type="text"
+          placeholder="Título"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <Textarea
+          placeholder="Conteúdo"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <Input
+          type="text"
+          placeholder="Autor"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+        />
+        <Button disabled={isButtonDisabled} onClick={handleAddPost}>
+          Adicionar Post
+        </Button>
+      </Container>
+    </>
   );
 };
 

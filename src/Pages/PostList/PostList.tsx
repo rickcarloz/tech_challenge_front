@@ -53,7 +53,7 @@ const PostList: React.FC = () => {
       <Title>Lista de Posts</Title>
       <ul>
         {posts.map((post) => (
-          <PostItem key={post.id}>
+          <PostItem key={post._id}>
             <PostTitle>{post.title}</PostTitle>
             <PostContent>{post.content}</PostContent>
             <PostDetails>

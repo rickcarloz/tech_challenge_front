@@ -26,12 +26,16 @@ export const usePosts = () => {
 
   const addPost = async (newPost: Omit<Post, "id">) => {
     try {
+      console.log("Enviando JSON para API:", newPost); // Exibe no console
+  
       const response = await axios.post("http://localhost:3010/posts", newPost);
       setPosts((prevPosts) => [response.data, ...prevPosts]); // Adiciona o novo post ao início da lista
     } catch (err) {
+      console.error("Erro ao adicionar um post:", err); // Exibe erro no console
       setError("Erro ao adicionar um post.");
     }
   };
+  
 
   return { posts, loading, error, addPost };
 };
