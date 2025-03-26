@@ -1,11 +1,59 @@
-/* index.css */
 html, body, #root {
   margin: 0;
   padding: 0;
-  width: 100%; /* Garante que o layout ocupe toda a largura */
+  width: 100%; 
   height: 100%;
+  font-family: Arial, sans-serif; 
+  scroll-behavior: smooth; 
+  overflow-x: hidden; 
 }
 
 * {
-  box-sizing: border-box; /* Evita problemas de largura e padding */
+  box-sizing: border-box; 
+}
+
+body {
+  background-color: #f3f4f6; 
+  color: #333; 
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0; 
+  font-weight: 600; 
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none; 
+  color: inherit; 
+}
+
+button {
+  cursor: pointer; 
+  border: none; 
+  background: none; 
+}
+
+img {
+  max-width: 100%;
+  height: auto; 
+}
+
+ul, ol {
+  margin: 0;
+  padding: 0;
+  list-style: none; 
+}
+
+@media (max-width: 768px) {
+  html, body {
+    font-size: 14px;
+  }
+
+  #root {
+    padding: 10px; 
+  }
 }

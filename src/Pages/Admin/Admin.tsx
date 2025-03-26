@@ -8,16 +8,13 @@ import Header from "../../components/Header/Header";
 const Admin: React.FC = () => {
   const { posts } = usePosts();
 
-  // Estado para a página atual e número de itens por página
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
 
-  // Calcular a lista de posts a ser exibida na página atual
   const indexOfLastPost = currentPage * itemsPerPage;
   const indexOfFirstPost = indexOfLastPost - itemsPerPage;
   const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
 
-  // Funções para navegar entre as páginas
   const nextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
@@ -26,7 +23,6 @@ const Admin: React.FC = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
-  // Número total de páginas
   const totalPages = Math.ceil(posts.length / itemsPerPage);
 
   return (
@@ -69,7 +65,6 @@ const Admin: React.FC = () => {
 
 export default Admin;
 
-// Estilizando com styled-components
 const AdminContainer = styled.div`
   padding: 20px;
   background-color: #f4f4f9;
@@ -133,19 +128,6 @@ const EditButton = styled(Link)`
 
   &:hover {
     background-color: #2980b9;
-  }
-`;
-
-const DeleteButton = styled.button`
-  padding: 8px 16px;
-  background-color: #e74c3c;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #c0392b;
   }
 `;
 

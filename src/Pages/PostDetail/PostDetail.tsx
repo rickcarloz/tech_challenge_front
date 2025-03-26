@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom"; // useNavigate para navegação
+import { useParams, useNavigate } from "react-router-dom"; 
 import { usePosts } from "../../hooks/usePosts";
 import styled from "styled-components";
 import Header from "../../components/Header/Header";
@@ -88,7 +88,7 @@ const PostDetail: React.FC = () => {
           <Author>Autor: {post.author}</Author>
         </Card>
 
-        <Button onClick={() => navigate('/')}>Voltar</Button> {/* Redireciona para a página inicial */}
+        <Button onClick={() => navigate('/')}>Voltar</Button> 
 
       </Container>
     </>

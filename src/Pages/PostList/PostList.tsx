@@ -1,4 +1,3 @@
-// src/Pages/PostList/PostList.tsx
 import React from "react";
 import styled from "styled-components";
 import { usePosts } from "../../hooks/usePosts";

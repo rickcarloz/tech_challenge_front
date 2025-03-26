@@ -13,7 +13,7 @@ export const usePosts = () => {
       try {
         setLoading(true);
         const response = await axios.get("http://localhost:3010/posts/");
-        setPosts(response.data); // Supondo que a resposta seja um array de posts
+        setPosts(response.data); 
         setLoading(false);
       } catch (err) {
         setError("Erro ao carregar os posts.");
@@ -26,12 +26,12 @@ export const usePosts = () => {
 
   const addPost = async (newPost: Omit<Post, "id">) => {
     try {
-      console.log("Enviando JSON para API:", newPost); // Exibe no console
+      console.log("Enviando JSON para API:", newPost);
   
       const response = await axios.post("http://localhost:3010/posts", newPost);
-      setPosts((prevPosts) => [response.data, ...prevPosts]); // Adiciona o novo post ao início da lista
+      setPosts((prevPosts) => [response.data, ...prevPosts]);
     } catch (err) {
-      console.error("Erro ao adicionar um post:", err); // Exibe erro no console
+      console.error("Erro ao adicionar um post:", err);
       setError("Erro ao adicionar um post.");
     }
   };

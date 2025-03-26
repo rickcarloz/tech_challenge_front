@@ -131,18 +131,16 @@ const Button = styled.button`
 const Home: React.FC = () => {
   const { posts } = usePosts();
   const [search, setSearch] = useState("");
-  const [currentPage, setCurrentPage] = useState(1); // Estado para a página atual
-  const postsPerPage = 3; // Número de posts por página
+  const [currentPage, setCurrentPage] = useState(1);
+  const postsPerPage = 3;
 
-  // Filtra os posts com base na busca
   const filteredPosts = posts.filter(
     (post) =>
       post.title.toLowerCase().includes(search.toLowerCase()) ||
       post.content.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Divide os posts em páginas
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage); // Número total de páginas
+  const totalPages = Math.ceil(filteredPosts.length / postsPerPage); 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
   const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
